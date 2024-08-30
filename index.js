@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./config/connectDB.js";
 import transactionRoutes from "./routes/transactionRoute.js";
+import expenseRoutes from "./routes/expensesRoute.js";
 import cron from "./cron/fetchPrices.js";
 
 dotenv.config();
@@ -16,10 +17,14 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan.default("tiny"));
 }
 
+// Cron job to fetch ethereum price every 10 minutes
 cron;
 
 // Transaction Endpoint
-app.use("/transactions", transactionRoutes);
+app.use("/api/v1/transactions", transactionRoutes);
+
+//Expenses EndPoint
+app.use("/api/v1/expenses", expenseRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

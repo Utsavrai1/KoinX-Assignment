@@ -14,6 +14,11 @@ const fetchTransactions = async (req, res) => {
       return res.status(404).json({ error: "No Data Found" });
     }
 
+    //Handling Invalid Address Inputs
+    if (response.data.status === "0" && response.data.message === "NOTOK") {
+      return res.json({ error: response.data.result });
+    }
+
     // Filtering the transactions to include only the necessary fields
     const filteredTransactions = response.data.result.map((tx) => ({
       blockNumber: tx.blockNumber,
