@@ -1,9 +1,8 @@
 import express from "express";
-import axios from "axios";
-import mongoose from "mongoose";
 import dotenv from "dotenv";
 import connectDB from "./config/connectDB.js";
 import transactionRoutes from "./routes/transactionRoute.js";
+import cron from "./cron/fetchPrices.js";
 
 dotenv.config();
 
@@ -16,6 +15,8 @@ if (process.env.NODE_ENV === "development") {
   const morgan = await import("morgan");
   app.use(morgan.default("tiny"));
 }
+
+cron;
 
 // Transaction Endpoint
 app.use("/transactions", transactionRoutes);
