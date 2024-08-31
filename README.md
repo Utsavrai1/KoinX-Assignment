@@ -6,6 +6,7 @@ This project is a backend application built using Node.js and Express. It intera
 
 ## Deployed Links
 
+- **API Documentation**: [https://koinx-d3ih.onrender.com/api-docs](https://koinx-d3ih.onrender.com/api-docs)
 - **API Endpoint**: [https://koinx-d3ih.onrender.com](https://koinx-d3ih.onrender.com)
 - **GitHub Repository**: [https://github.com/Utsavrai1/KoinX-Assignment](https://github.com/Utsavrai1/KoinX-Assignment)
 
@@ -95,3 +96,4 @@ This project is a backend application built using Node.js and Express. It intera
 - **Environment Variables**: Secured sensitive information using environment variables.
 - **Logging**: Added logging in development mode using `morgan` for better debugging.
 - **Cron Jobs**: Automated periodic tasks with `node-cron`.
+- **API Documentation**: Added Swagger API documentation for better understanding and testing of the API endpoints.

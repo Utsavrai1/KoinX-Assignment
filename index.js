@@ -6,6 +6,7 @@ import expenseRoutes from "./routes/expensesRoute.js";
 import checkHealthRoutes from "./routes/checkServerHealthRoute.js";
 import { fetchPrices } from "./cron/fetchPrices.js";
 import cron from "node-cron";
+import { swaggerDocs } from "./swagger/swagger.js";
 
 dotenv.config();
 
@@ -18,6 +19,13 @@ if (process.env.NODE_ENV === "development") {
   const morgan = await import("morgan");
   app.use(morgan.default("tiny"));
 }
+
+// Serve Swagger API docs
+app.use(
+  "/api-docs",
+  swaggerDocs.swaggerUi.serve,
+  swaggerDocs.swaggerUi.setup(swaggerDocs.swaggerSpec)
+);
 
 // Cron job to fetch ethereum price every 10 minutes
 cron.schedule("*/10 * * * *", async () => {
