@@ -6,10 +6,24 @@ import Price from "../models/price.js";
 const fetchPrices = async () => {
   try {
     console.log("Cron job started: Fetching Ethereum price");
-    const response = await axios.get(
-      "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=inr"
+    const response = await fetch(
+      "https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=inr",
+      {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+          "x-cg-demo-api-key": "CG-2dpqtLrtQnVqDXyop5NfJ1mU",
+        },
+      }
     );
-    const ethPrice = response.data.ethereum.inr;
+
+    if (!response.ok) {
+      throw new Error("Api response was not ok");
+    }
+
+    const jsonResponse = await response.json();
+    console.log(jsonResponse);
+    const ethPrice = jsonResponse.ethereum.inr;
 
     // Saving ether price to mongodb
     const newPrice = new Price({ price: ethPrice });
@@ -17,7 +31,7 @@ const fetchPrices = async () => {
 
     console.log(`Cron job successful: Ethereum price saved at ₹${ethPrice}`);
   } catch (error) {
-    console.error("Error fetching Ethereum price:", error);
+    console.error("Coingecko Api Refused fetching Ethereum price.");
   }
 };
 
