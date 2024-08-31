@@ -16,7 +16,7 @@ const fetchTransactions = async (req, res) => {
 
     //Handling Invalid Address Inputs
     if (response.data.status === "0" && response.data.message === "NOTOK") {
-      return res.json({ error: response.data.result });
+      return res.status(400).json({ error: response.data.result });
     }
 
     // Filtering the transactions to include only the necessary fields

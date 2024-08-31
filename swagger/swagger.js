@@ -28,6 +28,8 @@ const options = {
 
 const swaggerSpec = swaggerJsdoc(options);
 
+delete swaggerSpec.components;
+
 export const swaggerDocs = {
   swaggerUi,
   swaggerSpec,

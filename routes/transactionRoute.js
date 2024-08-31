@@ -59,6 +59,8 @@ const router = express.Router();
  *
  * /api/v1/transactions/{address}:
  *   get:
+ *     tags:
+ *       - Transactions
  *     summary: Fetch transactions for a user by address
  *     description: Retrieve a list of Ethereum transactions associated with a specific address.
  *     parameters:
@@ -67,18 +69,42 @@ const router = express.Router();
  *         required: true
  *         schema:
  *           type: string
- *         description: The Ethereum address of the user.
+ *         description: Address provided by the user.
  *     responses:
  *       200:
  *         description: A list of transactions
  *         content:
  *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/Transaction'
+ *             examples:
+ *               example1:
+ *                 summary: Transactions response
+ *                 value:
+ *                   - blockNumber: "15116687"
+ *                     timeStamp: "1657480194"
+ *                     hash: "0xe4f9f788c18655358d9b6a86b2dd4255c6fef91009fb67a04b84edce26dd7c20"
+ *                     from: "0xb2723beacce4bc54f23544343927f048cef6bd5a"
+ *                     to: "0xce94e5621a5f7068253c42558c147480f38b5e0d"
+ *                     value: "256361350000000000"
+ *                     gas: "105000"
+ *                     gasPrice: "74646632790"
+ *                     isError: "0"
+ *                     confirmations: "5531930"
+ *                     _id: "66d30f6d704d5af3b5c07b76"
+ *                   - blockNumber: "14609155"
+ *                     timeStamp: "1650284543"
+ *                     hash: "0x25f745fc71d9ddd0db561d06a023e6c654089861dc4625cdc81743afd3228982"
+ *                     from: "0xf598b81ef8c7b52a7f2a89253436e72ec6dc871f"
+ *                     to: "0xce94e5621a5f7068253c42558c147480f38b5e0d"
+ *                     value: "10003420000000000"
+ *                     gas: "105000"
+ *                     gasPrice: "29489937413"
+ *                     isError: "0"
+ *                     confirmations: "6040699"
+ *                     _id: "66d349cb7b40f71552932713"
  *       400:
  *         description: Invalid address
+ *       404:
+ *         description: No Data Found
  *       500:
  *         description: Server error
  */
