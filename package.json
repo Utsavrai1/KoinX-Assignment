@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon --legacy-watch index.js",
+    "docker:dev": "docker-compose -f docker-compose.dev.yml up --build",
+    "docker:prod": "docker-compose -f docker-compose.prod.yml up --build"
   },
   "author": "Utsav Rai",
   "type": "module",
@@ -18,5 +19,8 @@
     "mongoose": "^8.6.0",
     "morgan": "^1.10.0",
     "node-cron": "^3.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
   }
 }

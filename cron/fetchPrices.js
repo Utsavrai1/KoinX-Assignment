@@ -1,9 +1,9 @@
-import cron from "node-cron";
 import axios from "axios";
 import Price from "../models/price.js";
 
-//Scheduled an cron job to fetch ethereum price every 10 minutes
-cron.schedule("*/10 * * * *", async () => {
+//Function to fetch ethereum price
+
+const fetchPrices = async () => {
   try {
     console.log("Cron job started: Fetching Ethereum price");
     const response = await axios.get(
@@ -19,6 +19,6 @@ cron.schedule("*/10 * * * *", async () => {
   } catch (error) {
     console.error("Error fetching Ethereum price:", error);
   }
-});
+};
 
-export default cron;
+export { fetchPrices };
