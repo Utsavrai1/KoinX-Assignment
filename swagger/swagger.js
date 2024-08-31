@@ -11,12 +11,12 @@ const swaggerDefinition = {
   },
   servers: [
     {
-      url: "http://localhost:3001",
-      description: "Development server",
-    },
-    {
       url: "https://koinx-d3ih.onrender.com",
       description: "Production server",
+    },
+    {
+      url: "http://localhost:3001",
+      description: "Development server",
     },
   ],
 };
