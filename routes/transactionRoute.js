@@ -60,7 +60,7 @@ const router = express.Router();
  * /api/v1/transactions/{address}:
  *   get:
  *     tags:
- *       - Transactions
+ *       - Task 1 (Transactions)
  *     summary: Fetch transactions for a user by address
  *     description: Retrieve a list of Ethereum transactions associated with a specific address.
  *     parameters:

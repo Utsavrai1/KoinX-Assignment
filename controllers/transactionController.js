@@ -19,6 +19,13 @@ const fetchTransactions = async (req, res) => {
       return res.status(400).json({ error: response.data.result });
     }
 
+    if (
+      response.data.status === "0" &&
+      response.data.message === "No transactions found"
+    ) {
+      return res.status(404).json({ error: "No Data Found" });
+    }
+
     // Filtering the transactions to include only the necessary fields
     const filteredTransactions = response.data.result.map((tx) => ({
       blockNumber: tx.blockNumber,

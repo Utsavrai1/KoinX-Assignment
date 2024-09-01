@@ -24,7 +24,7 @@ const router = express.Router();
  * /api/v1/expenses/{address}:
  *   get:
  *     tags:
- *       - Expenses
+ *       - Task 3 (Expenses)
  *     summary: Get total expenses for a user by address
  *     description: Retrieve the total gas fees spent by a user for all transactions associated with a specific Ethereum address.
  *     parameters:

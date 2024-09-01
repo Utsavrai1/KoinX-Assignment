@@ -1,24 +1,16 @@
-import express from "express";
-import dotenv from "dotenv";
-import connectDB from "./config/connectDB.js";
-import transactionRoutes from "./routes/transactionRoute.js";
-import expenseRoutes from "./routes/expensesRoute.js";
 import checkHealthRoutes from "./routes/checkServerHealthRoute.js";
 import { fetchPrices } from "./cron/fetchPrices.js";
 import cron from "node-cron";
 import { swaggerDocs } from "./swagger/swagger.js";
-
-dotenv.config();
-
-connectDB();
-
-const app = express();
-app.use(express.json());
+import app from "./app.js";
+import { connectDB } from "./config/databaseConfig.js";
 
 if (process.env.NODE_ENV === "development") {
   const morgan = await import("morgan");
   app.use(morgan.default("tiny"));
 }
+
+connectDB();
 
 // Serve Swagger API docs
 app.use(
@@ -38,12 +30,6 @@ app.get("/", async (req, res) => {
 
 //Check Health of the Server
 app.use("/health", checkHealthRoutes);
-
-// Transaction Endpoint
-app.use("/api/v1/transactions", transactionRoutes);
-
-//Expenses EndPoint
-app.use("/api/v1/expenses", expenseRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

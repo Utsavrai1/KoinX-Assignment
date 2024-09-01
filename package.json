@@ -3,14 +3,15 @@
   "version": "1.0.0",
   "description": "A Server Side Application to fetch Crypto Transactions of a user.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon --legacy-watch index.js",
     "docker:dev": "docker-compose -f docker-compose.dev.yml up --build",
-    "docker:prod": "docker-compose -f docker-compose.prod.yml up --build"
+    "docker:prod": "docker-compose -f docker-compose.prod.yml up --build",
+    "test": "jest"
   },
   "author": "Utsav Rai",
-  "type": "module",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.7.5",
@@ -23,6 +24,10 @@
     "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.4"
+    "@babel/preset-env": "^7.25.4",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.4",
+    "supertest": "^7.0.0"
   }
 }
