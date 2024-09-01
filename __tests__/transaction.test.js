@@ -1,14 +1,5 @@
 import request from "supertest";
 import app from "../app.js";
-// import { connectDB, closeDB } from "../config/databaseConfig.js";
-
-// beforeAll(async () => {
-//   await connectDB();
-// });
-
-// afterAll(async () => {
-//   await closeDB();
-// });
 
 describe("Transaction API", () => {
   it("should fetch transactions for a valid address", async () => {
