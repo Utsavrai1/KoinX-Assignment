@@ -71,6 +71,23 @@ This project is a backend application built using Node.js and Express. It intera
      npm run docker:prod
      ```
 
+## Running Test Cases
+
+To run the test cases for this project, follow these steps:
+
+1. **Install Dependencies**:
+   Ensure all required dependencies are installed.
+
+   ```bash
+   npm install
+   ```
+
+2. **Run the Test Cases**: Execute the test cases by running:
+
+   ```bash
+   npm test
+   ```
+
 ## Task Completion
 
 ### Task 1: Fetching Crypto Transactions
@@ -97,3 +114,4 @@ This project is a backend application built using Node.js and Express. It intera
 - **Logging**: Added logging in development mode using `morgan` for better debugging.
 - **Cron Jobs**: Automated periodic tasks with `node-cron`.
 - **API Documentation**: Added Swagger API documentation for better understanding and testing of the API endpoints.
+- **Testing**: Added comprehensive test cases for transaction and expense APIs to ensure functionality and reliability.
